@@ -38,10 +38,7 @@ class cart(Fmi2Slave):
         self.force = [0.0, 0.0]
 
     def do_step(self, t, dt):
-        try:
             self.acceleration = sum(self.force) / (self.mass + 0.1)
             self.velocity += self.acceleration * dt
             self.position += self.velocity * dt
-        except Exception as e:
-            print(f"error in cart do_step: {e}")
         return True
